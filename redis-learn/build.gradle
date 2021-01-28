@@ -1,0 +1,8 @@
+archivesBaseName = 'redis-learn'
+
+jar.enabled = true
+bootJar.enabled = true
+
+dependencies {
+    compile 'org.redisson:redisson:3.14.1'
+}

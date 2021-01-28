@@ -1,0 +1,3 @@
+rootProject.name = 'thinkinginspringcloud'
+include 'redis-learn'
+
