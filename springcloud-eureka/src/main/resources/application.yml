@@ -1,0 +1,18 @@
+server:
+  port: 8761
+
+spring:
+  application:
+    name: springcloud-eureka
+
+eureka:
+  instance:
+    hostname: 192.168.9.27
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${custom.localIp}:${server.port}/eureka/
+
+custom:
+  localIp: 192.168.9.27

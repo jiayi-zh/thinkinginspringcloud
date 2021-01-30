@@ -1,0 +1,10 @@
+archivesBaseName = 'springcloud-eureka'
+
+jar.enabled = true
+bootJar.enabled = true
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    compile group: 'org.latencyutils', name: 'LatencyUtils', version: '2.0.2'
+}

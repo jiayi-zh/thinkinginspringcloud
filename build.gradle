@@ -5,7 +5,7 @@ plugins {
 }
 
 ext {
-    set('springCloudVersion', "2020.0.0")
+    set('springCloudVersion', "2020.0.1-SNAPSHOT")
 }
 
 subprojects {
@@ -23,6 +23,8 @@ subprojects {
         mavenLocal()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         mavenCentral()
+        maven { url 'https://repo.spring.io/milestone' }
+        maven { url 'https://repo.spring.io/snapshot' }
     }
 
 	dependencyManagement {

@@ -1,3 +1,4 @@
 rootProject.name = 'thinkinginspringcloud'
 include 'redis-learn'
+include 'springcloud-eureka'
 
