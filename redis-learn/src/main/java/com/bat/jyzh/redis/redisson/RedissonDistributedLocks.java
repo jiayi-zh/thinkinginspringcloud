@@ -1,6 +1,7 @@
 package com.bat.jyzh.redis.redisson;
 
 import org.redisson.Redisson;
+import org.redisson.api.RCountDownLatch;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.redisson.config.Config;
@@ -47,5 +48,18 @@ public class RedissonDistributedLocks {
         } finally {
             lock.unlock();
         }
+    }
+
+    /**
+     * 闭锁 测试
+     *
+     * @author ZhengYu
+     */
+    private static void testCountDownLatch(RedissonClient redisson) {
+        RCountDownLatch countDownLatch = redisson.getCountDownLatch("lock:");
+        boolean setCountFlag = countDownLatch.trySetCount(1);
+        System.out.println("==> " + setCountFlag);
+
+
     }
 }
