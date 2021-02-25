@@ -6,13 +6,6 @@ spring:
     name: springcloud-business
 
 eureka:
-  instance:
-    hostname: 192.168.9.27
   client:
-    registerWithEureka: true
-    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://${custom.localIp}:8761/eureka/
-
-custom:
-  localIp: 192.168.9.27
+      defaultZone: http://192.168.9.27:8761/eureka/
