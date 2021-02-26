@@ -1,0 +1,25 @@
+server:
+  port: 15000
+
+spring:
+  application:
+    name: springcloud-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 是否与服务发现组件进行结合, 通过 ServiceId 转发到具体的服务实例
+          enabled: true
+          # 当注册中心为 Eureka 时, 启动小写的 ServiceId 进行基于服务路由的转发
+          lower-case-service-id: true
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.9.27:8761/eureka/
+
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
