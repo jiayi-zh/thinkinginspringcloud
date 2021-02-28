@@ -1,3 +1,7 @@
+plugins {
+    id "com.arenagod.gradle.MybatisGenerator" version "1.4"
+}
+
 archivesBaseName = 'springcloud-business'
 
 jar.enabled = true
@@ -7,4 +11,19 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     compile group: 'org.latencyutils', name: 'LatencyUtils', version: '2.0.2'
+    /*mybatis*/
+    compile 'mysql:mysql-connector-java:5.1.6'
+    /*sentinel*/
+    implementation group: 'com.alibaba.csp', name: 'sentinel-core', version: '1.8.0'
+    /*sentinel console*/
+    implementation group: 'com.alibaba.csp', name: 'sentinel-transport-simple-http', version: '1.8.0'
+}
+
+configurations {
+    mybatisGenerator
+}
+
+mybatisGenerator {
+    verbose = true
+    configFile = 'src/main/resources/generatorConfig.xml'
 }

@@ -7,7 +7,9 @@ spring:
 
 eureka:
   instance:
-    hostname: 192.168.9.27
+    hostname: 127.0.0.1
+    # 设置在
+    lease-expiration-duration-in-seconds: 10
   client:
     registerWithEureka: false
     fetchRegistry: false
@@ -19,4 +21,4 @@ eureka:
     enable-self-preservation: false
 
 custom:
-  localIp: 192.168.9.27
+  localIp: 127.0.0.1
