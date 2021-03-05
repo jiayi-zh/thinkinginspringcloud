@@ -17,6 +17,9 @@ dependencies {
     implementation group: 'com.alibaba.csp', name: 'sentinel-core', version: '1.8.0'
     /*sentinel console*/
     implementation group: 'com.alibaba.csp', name: 'sentinel-transport-simple-http', version: '1.8.0'
+    /*common*/
+    compile project(":common")
+
 }
 
 configurations {

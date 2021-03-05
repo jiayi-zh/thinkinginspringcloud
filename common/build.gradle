@@ -1,0 +1,7 @@
+archivesBaseName = 'common'
+
+jar.enabled = true
+bootJar.enabled = true
+
+dependencies {
+}

@@ -4,4 +4,5 @@ include 'springcloud-eureka'
 include 'springcloud-business'
 include 'springcloud-gateway'
 include 'springcloud-feign'
+include 'common'
 
