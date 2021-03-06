@@ -7,6 +7,8 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     /*open-feign*/
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    /*open-feign-okHttp*/
+    implementation group: 'io.github.openfeign', name: 'feign-okhttp', version: '11.0'
     /*fastjson*/
     implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.73'
     /*common*/

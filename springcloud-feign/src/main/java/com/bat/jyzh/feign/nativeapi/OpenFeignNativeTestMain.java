@@ -7,13 +7,9 @@ import com.bat.jyzh.common.entity.resp.PageInfo;
 import com.bat.jyzh.feign.nativeapi.client.UserClient;
 import com.bat.jyzh.feign.nativeapi.decoder.CustomDecoder;
 import com.bat.jyzh.feign.nativeapi.encoder.CustomEncoder;
-import feign.Client;
 import feign.Feign;
-import feign.Request;
-import feign.Response;
+import feign.okhttp.OkHttpClient;
 import lombok.extern.slf4j.Slf4j;
-
-import java.io.IOException;
 
 /**
  * 原生 OpenFeign 使用
@@ -24,20 +20,18 @@ import java.io.IOException;
 @Slf4j
 public class OpenFeignNativeTestMain {
     public static void main(String[] args) {
+        // 使用原生的OkHttp
+        okhttp3.OkHttpClient okHttpClient = new okhttp3.OkHttpClient();
+
         UserClient userClient = Feign.builder()
                 .decoder(new CustomDecoder())
                 .encoder(new CustomEncoder())
-                .client(new Client() {
-                    @Override
-                    public Response execute(Request request, Request.Options options) throws IOException {
-                        return null;
-                    }
-                })
-                .target(UserClient.class, "http://192.168.9.27:11011/test");
+                .client(new OkHttpClient())
+                .target(UserClient.class, "http://127.0.0.1:11011/test");
 
-//        CommonResult<Long> postUserResp = userClient.postUser(new User("zy", 27));
-//        log.info("post user ==> {}", postUserResp);
-        CommonResult<PageInfo<User>> userListResp = userClient.queryUserList("aaa");
+        CommonResult<Long> postUserResp = userClient.postUser(new User("zy", 27));
+        log.info("post user ==> {}", postUserResp);
+        CommonResult<PageInfo<User>> userListResp = userClient.queryUserList("zy");
         log.info("query user list ==> {}", JSONObject.toJSONString(userListResp));
     }
 }
