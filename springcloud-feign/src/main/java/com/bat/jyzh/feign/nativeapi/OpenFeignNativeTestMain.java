@@ -20,9 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class OpenFeignNativeTestMain {
     public static void main(String[] args) {
-        // 使用原生的OkHttp
-        okhttp3.OkHttpClient okHttpClient = new okhttp3.OkHttpClient();
-
         UserClient userClient = Feign.builder()
                 .decoder(new CustomDecoder())
                 .encoder(new CustomEncoder())
