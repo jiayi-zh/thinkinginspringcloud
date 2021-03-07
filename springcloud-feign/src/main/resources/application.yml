@@ -1,0 +1,27 @@
+server:
+  port: 12012
+
+spring:
+  application:
+    name: springcloud-feign
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true # 自动重试
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/
+
+feign:
+  okhttp:
+    enabled: true              # 使用 OKHttpClient 作为 Feign HTTP Client
+  httpclient:
+    max-connections: 1000      # 所有连接的总连接最大数
+    time-to-live: 1800         # 连接的存活时间(单位是秒)
+    follow-redirects: true     # 自动重定向
+    connection-timeout: 30000  # 建立连接的超时时间, 单位毫秒
+

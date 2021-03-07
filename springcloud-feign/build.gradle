@@ -5,10 +5,11 @@ bootJar.enabled = true
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
     /*open-feign*/
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     /*open-feign-okHttp*/
-    implementation group: 'io.github.openfeign', name: 'feign-okhttp', version: '11.0'
+    implementation group: 'io.github.openfeign', name: 'feign-okhttp'
     /*fastjson*/
     implementation group: 'com.alibaba', name: 'fastjson', version: '1.2.73'
     /*common*/
