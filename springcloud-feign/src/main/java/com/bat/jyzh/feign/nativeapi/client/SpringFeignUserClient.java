@@ -1,9 +1,9 @@
-package com.bat.jyzh.feign.springcloud.client;
+package com.bat.jyzh.feign.nativeapi.client;
 
 import com.bat.jyzh.common.entity.User;
 import com.bat.jyzh.common.entity.resp.CommonResult;
 import com.bat.jyzh.common.entity.resp.PageInfo;
-import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.*;
  * @author ZhengYu
  * @version 1.0 2021/3/5 10:08
  **/
-@FeignClient(name = "SPRINGCLOUD-BUSINESS")
 @RequestMapping("/test")
-public interface UserClient {
+public interface SpringFeignUserClient {
 
-    @GetMapping("/user/list")
+    @GetMapping(value = "/user/list", consumes = MediaType.APPLICATION_JSON_VALUE)
     CommonResult<PageInfo<User>> queryUserList(@RequestParam(value = "name") String name);
 
-    @PostMapping("/user")
+    @PostMapping(value = "/user", consumes = MediaType.APPLICATION_JSON_VALUE)
     CommonResult<Long> postUser(@RequestBody User user);
 }
