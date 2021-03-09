@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class BeanValidatorController {
 
     @PostMapping("/test")
-    public String test(@RequestBody @Validated UserDTO userDTO) {
-        log.info("{}", JSONObject.toJSONString(userDTO));
+    public String test(@RequestBody @Validated UserDTO user) {
+        log.info("{}", JSONObject.toJSONString(user));
         return "success";
     }
 }
