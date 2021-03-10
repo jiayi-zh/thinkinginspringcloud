@@ -25,4 +25,11 @@ public class CommonResult<T> {
         this.msg = msg;
         this.data = data;
     }
+
+    public static CommonResult<?> buildCommonResult(Integer code, String msg) {
+        CommonResult<?> result = new CommonResult<>();
+        result.setCode(code);
+        result.setMsg(msg);
+        return result;
+    }
 }

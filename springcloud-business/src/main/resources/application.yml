@@ -1,9 +1,24 @@
 server:
   port: 11011
 
+master:
+  ip: 192.168.9.102
+
 spring:
   application:
     name: springcloud-business
+  datasource:
+    face:
+      driverClass: com.mysql.jdbc.Driver
+      url: jdbc:mysql://${master.ip}:12003/face_recognition_adapter?&useSSL=false&characterEncoding=utf8
+      username: java
+      password: R$dXWU6ZMOG*wiQ9
+    cloud:
+      driverClass: com.mysql.jdbc.Driver
+      url: jdbc:mysql://${master.ip}:12003/temp?&useSSL=false&characterEncoding=utf8
+      username: java
+      password: R$dXWU6ZMOG*wiQ9
+
 
 eureka:
   instance:

@@ -19,7 +19,10 @@ dependencies {
     implementation group: 'com.alibaba.csp', name: 'sentinel-transport-simple-http', version: '1.8.0'
     /*common*/
     compile project(":common")
-
+    /*mybatis*/
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+    /*druid*/
+    implementation group: 'com.alibaba', name: 'druid', version: '1.2.3'
 }
 
 configurations {
