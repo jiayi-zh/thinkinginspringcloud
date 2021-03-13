@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.jdbc.support.JdbcTransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
 
@@ -22,22 +20,22 @@ import javax.sql.DataSource;
  * @version 1.0 2021/3/10 9:55
  **/
 @Configuration
-public class FaceDataSourceConfig {
+public class DataSource2Config {
 
-    @Value("${spring.datasource.face.driverClass}")
+    @Value("${spring.datasource.source2.driverClass}")
     private String driverClassName;
 
-    @Value("${spring.datasource.face.url}")
+    @Value("${spring.datasource.source2.url}")
     private String url;
 
-    @Value("${spring.datasource.face.username}")
+    @Value("${spring.datasource.source2.username}")
     private String username;
 
-    @Value("${spring.datasource.face.password}")
+    @Value("${spring.datasource.source2.password}")
     private String password;
 
     @Bean
-    public DataSource faceAlgorithmAdapterDataSource() {
+    public DataSource source2DataSource() {
         DruidDataSource druidDataSource = new DruidDataSource();
         druidDataSource.setDriverClassName(driverClassName);
         druidDataSource.setUrl(url);
@@ -59,21 +57,20 @@ public class FaceDataSourceConfig {
     }
 
     @Bean
-    public SqlSessionFactory faceAlgorithmAdapterSqlSessionFactory(@Qualifier("faceAlgorithmAdapterDataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory source2SqlSessionFactory(@Qualifier("source2DataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource);
-
         sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
         return sqlSessionFactory.getObject();
     }
 
     @Bean
-    public DataSourceTransactionManager faceAlgorithmAdapterDataSourceTransactionManager(@Qualifier("faceAlgorithmAdapterDataSource") DataSource dataSource) {
+    public DataSourceTransactionManager source2DataSourceTransactionManager(@Qualifier("source2DataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean
-    public SqlSessionTemplate faceAlgorithmAdapterSqlSessionTemplate(@Qualifier("faceAlgorithmAdapterSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    public SqlSessionTemplate source2SqlSessionTemplate(@Qualifier("source2SqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }

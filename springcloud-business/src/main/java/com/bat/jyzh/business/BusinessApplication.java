@@ -15,9 +15,9 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 @EnableDiscoveryClient
 @MapperScans({
-        // 当多个 @MapperScan 扫描到相同的 dao 时, 先扫描的 SqlSessionTemplate 持有该 Dao 的代理对象
-        @MapperScan(basePackages = "com.bat.jyzh.business.mybatis.dao", sqlSessionTemplateRef = "faceAlgorithmAdapterSqlSessionTemplate"),
-        @MapperScan(basePackages = "com.bat.jyzh.business.mybatis.dao", sqlSessionTemplateRef = "cloudAlgorithmAdapterSqlSessionTemplate"),
+        // 当多个 @MapperScan 扫描到相同的 dao 时, 先扫描的 SqlSessionTemplate 持有该 Dao 的代理对象, 这是因为 MapperRegister 做了缓存
+        @MapperScan(basePackages = "com.bat.jyzh.business.mybatis.dao", sqlSessionTemplateRef = "source1SqlSessionTemplate"),
+        @MapperScan(basePackages = "com.bat.jyzh.business.mybatis.dao", sqlSessionTemplateRef = "source2SqlSessionTemplate"),
 })
 public class BusinessApplication {
     public static void main(String[] args) {

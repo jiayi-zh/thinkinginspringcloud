@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.jdbc.support.JdbcTransactionManager;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import javax.sql.DataSource;
 
@@ -23,22 +20,22 @@ import javax.sql.DataSource;
  * @version 1.0 2021/3/10 9:55
  **/
 @Configuration
-public class CloudDataSourceConfig {
+public class DataSource1Config {
 
-    @Value("${spring.datasource.cloud.driverClass}")
+    @Value("${spring.datasource.source1.driverClass}")
     private String driverClassName;
 
-    @Value("${spring.datasource.cloud.url}")
+    @Value("${spring.datasource.source1.url}")
     private String url;
 
-    @Value("${spring.datasource.cloud.username}")
+    @Value("${spring.datasource.source1.username}")
     private String username;
 
-    @Value("${spring.datasource.cloud.password}")
+    @Value("${spring.datasource.source1.password}")
     private String password;
 
     @Bean
-    public DataSource cloudAlgorithmAdapterDataSource() {
+    public DataSource source1DataSource() {
         DruidDataSource druidDataSource = new DruidDataSource();
         druidDataSource.setDriverClassName(driverClassName);
         druidDataSource.setUrl(url);
@@ -60,7 +57,7 @@ public class CloudDataSourceConfig {
     }
 
     @Bean
-    public SqlSessionFactory cloudAlgorithmAdapterSqlSessionFactory(@Qualifier("cloudAlgorithmAdapterDataSource") DataSource dataSource) throws Exception {
+    public SqlSessionFactory source1SqlSessionFactory(@Qualifier("source1DataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource);
         sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
@@ -68,12 +65,12 @@ public class CloudDataSourceConfig {
     }
 
     @Bean
-    public DataSourceTransactionManager cloudAlgorithmAdapterDataSourceTransactionManager(@Qualifier("cloudAlgorithmAdapterDataSource") DataSource dataSource) {
+    public DataSourceTransactionManager source1DataSourceTransactionManager(@Qualifier("source1DataSource") DataSource dataSource) {
         return new DataSourceTransactionManager(dataSource);
     }
 
     @Bean
-    public SqlSessionTemplate cloudAlgorithmAdapterSqlSessionTemplate(@Qualifier("cloudAlgorithmAdapterSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    public SqlSessionTemplate source1SqlSessionTemplate(@Qualifier("source1SqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 }
