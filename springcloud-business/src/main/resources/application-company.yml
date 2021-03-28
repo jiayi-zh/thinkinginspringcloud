@@ -1,0 +1,28 @@
+server:
+  port: 11011
+
+master:
+  ip: 192.168.9.102
+
+spring:
+  application:
+    name: springcloud-business
+  datasource:
+    source1:
+      driverClass: com.mysql.jdbc.Driver
+      url: jdbc:mysql://${master.ip}:12003/db1?&useSSL=false&characterEncoding=utf8
+      username: java
+      password: R$dXWU6ZMOG*wiQ9
+    source2:
+      driverClass: com.mysql.jdbc.Driver
+      url: jdbc:mysql://${master.ip}:12003/db2?&useSSL=false&characterEncoding=utf8
+      username: java
+      password: R$dXWU6ZMOG*wiQ9
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8761/eureka/

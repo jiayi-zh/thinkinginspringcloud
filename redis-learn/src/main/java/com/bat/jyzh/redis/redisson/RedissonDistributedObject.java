@@ -15,26 +15,26 @@ import org.redisson.config.Config;
  * @version 1.0 2021/1/27 14:17
  **/
 public class RedissonDistributedObject {
-    public static void main(String[] args) {
-        Config config = new Config();
-        config.useSingleServer()
-                .setAddress("redis://192.168.9.102:12007")
-                .setDatabase(3)
-                .setUsername("golang")
-                .setPassword("a884ebd3ab5e4fc4")
-                .setTimeout(3000);
-
-        RedissonClient redisson = Redisson.create(config);
-
-        // 通用对象桶（Object Bucket） 测试
-//        testObjectBucket(redisson);
-
-        // BitSet 测试
-//        testBitSet(redisson);
-
-        // 布隆过滤器（Bloom Filter） 测试
-        testBloomFilter(redisson);
-    }
+//    public static void main(String[] args) {
+//        Config config = new Config();
+//        config.useSingleServer()
+//                .setAddress("redis://192.168.9.102:12007")
+//                .setDatabase(3)
+//                .setUsername("golang")
+//                .setPassword("a884ebd3ab5e4fc4")
+//                .setTimeout(3000);
+//
+//        RedissonClient redisson = Redisson.create(config);
+//
+//        // 通用对象桶（Object Bucket） 测试
+////        testObjectBucket(redisson);
+//
+//        // BitSet 测试
+////        testBitSet(redisson);
+//
+//        // 布隆过滤器（Bloom Filter） 测试
+//        testBloomFilter(redisson);
+//    }
 
     /**
      * 通用对象桶（Object Bucket） 测试

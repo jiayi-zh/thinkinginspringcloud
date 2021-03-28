@@ -1,14 +1,13 @@
 package com.bat.jyzh.business.mybatis.entity;
 
-import java.io.Serializable;
-
-public class UserPO implements Serializable{
-
+public class PhotoPO {
     private Long id;
 
-    private String name;
+    private Long userId;
 
-    private Byte sex;
+    private Byte type;
+
+    private String url;
 
     private String createTime;
 
@@ -22,20 +21,28 @@ public class UserPO implements Serializable{
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public Byte getSex() {
-        return sex;
+    public Byte getType() {
+        return type;
     }
 
-    public void setSex(Byte sex) {
-        this.sex = sex;
+    public void setType(Byte type) {
+        this.type = type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url == null ? null : url.trim();
     }
 
     public String getCreateTime() {

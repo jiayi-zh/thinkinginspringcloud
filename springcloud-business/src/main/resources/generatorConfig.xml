@@ -15,7 +15,7 @@
 
         <!--数据库链接地址账号密码-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/org" userId="root" password="123">
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/db1" userId="root" password="123">
         </jdbcConnection>
 
         <!--指定JDBC类型和Java类型如何转换-->
@@ -41,7 +41,7 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="t_merchandise" domainObjectName="Merchandise"
+        <table tableName="t_photo_info" domainObjectName="PhotoPO"
                enableDeleteByPrimaryKey="true"
                enableSelectByPrimaryKey="true"
                selectByExampleQueryId="false"

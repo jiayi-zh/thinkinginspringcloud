@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
@@ -60,6 +61,7 @@ public class DataSource1Config {
     public SqlSessionFactory source1SqlSessionFactory(@Qualifier("source1DataSource") DataSource dataSource) throws Exception {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource);
+        sqlSessionFactory.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
         sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*.xml"));
         return sqlSessionFactory.getObject();
     }
