@@ -2,6 +2,7 @@ package com.bat.jyzh.business.sentinel;
 
 import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.SphU;
+import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.slots.block.RuleConstant;
 import com.alibaba.csp.sentinel.slots.block.flow.FlowRule;
@@ -18,6 +19,8 @@ import java.util.List;
  **/
 public class SentinelMain {
     public static void main(String[] args) {
+        ContextUtil.enter("user-center", "");
+
         // 配置规则.
         initFlowRules();
 
@@ -27,7 +30,7 @@ public class SentinelMain {
                 // 被保护的逻辑
                 System.out.println("hello world");
             } catch (BlockException ex) {
-                
+
                 // 处理被流控的逻辑
                 System.out.println("blocked!");
             }

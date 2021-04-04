@@ -5,4 +5,5 @@ include 'springcloud-business'
 include 'springcloud-gateway'
 include 'springcloud-feign'
 include 'common'
+include 'springcloud-grpc'
 

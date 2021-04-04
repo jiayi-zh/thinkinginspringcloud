@@ -37,6 +37,8 @@ public class TransactionController implements ApplicationContextAware {
     @Autowired
     private UserDao userDao;
 
+    private ThreadLocal<Object> threadLocal = new ThreadLocal<>();
+
     @Autowired
     private DataSourceTransactionManager source1DataSourceTransactionManager;
 
@@ -66,8 +68,7 @@ public class TransactionController implements ApplicationContextAware {
      */
     @GetMapping("programmatic")
     public CommonResult<?> programmaticTransaction() {
-        DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition();
-        defaultTransactionDefinition.setPropagationBehavior(TransactionDefinition.PROPAGATION_REQUIRED);
+        DefaultTransactionDefinition defaultTransactionDefinition = new DefaultTransactionDefinition(TransactionDefinition.PROPAGATION_REQUIRED);
         TransactionStatus transactionStatus = source1DataSourceTransactionManager.getTransaction(defaultTransactionDefinition);
 
         UserPO user = new UserPO();

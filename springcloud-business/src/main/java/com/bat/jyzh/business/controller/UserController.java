@@ -4,6 +4,7 @@ import com.bat.jyzh.common.entity.User;
 import com.bat.jyzh.common.entity.resp.CommonResult;
 import com.bat.jyzh.common.entity.resp.PageInfo;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +21,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/test")
 public class UserController {
+
 
     private static final List<User> simulatedDB = new CopyOnWriteArrayList<>();
 
